@@ -94,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': get_secret('DB_NAME'),
         'USER': get_secret('USER'),
-        'PASSWORD': get_secret('neunapp2020'),
+        'PASSWORD': get_secret('PASSWORD'),
         'HOST': '127.0.0.1',
         'PORT': '5432'
 
