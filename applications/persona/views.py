@@ -6,7 +6,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView,
 
 from .models import Person,Reunion
 from .serializers import PersonSerializer, PersonaSerializer2, PersonaSerializerPotente, ReunionSerializer, \
-    ReunionSerializerSMF, ReunionSerializerLink
+    ReunionSerializerSMF, ReunionSerializerLink, PersonPagination,CountReunionSerializer
 
 
 class ListaPersonas(ListView):
@@ -76,3 +76,19 @@ class ReunionAPILista2(ListAPIView):
 class ReunionAPIListaLink(ListAPIView):
     serializer_class = ReunionSerializerLink
     queryset = Reunion.objects.all()
+
+
+class PersonPaginacionLista(ListAPIView):
+    """
+        Lista con paginacion
+    """
+    # serializer_class = PersonaSerializer
+    serializer_class = PersonaSerializerPotente
+    pagintation_class = PersonPagination
+    queryset = Person.objects.all()
+
+
+class ReunionByPersonJob(ListAPIView):
+    serializer_class = CountReunionSerializer
+    def get_queryset(self):
+        return  Reunion.objects.cantidad_reuniones_job()

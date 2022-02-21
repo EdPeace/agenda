@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework import serializers, pagination
 
 from .models import Person, Reunion, Hobby
 
@@ -41,8 +41,8 @@ class PersonaSerializerPlus(serializers.ModelSerializer):
 
 
 class ReunionSerializer(serializers.ModelSerializer):
-    persona = PersonaSerializerPlus()
-
+    #persona = PersonaSerializerPlus()
+    reunion = serializers.IntegerField(required=False)
     class Meta:
         model = Reunion
         fields = ('__all__')
@@ -74,3 +74,13 @@ class ReunionSerializerLink(serializers.HyperlinkedModelSerializer):
         extra_kwargs={
             'persona': {'view_name':'persona app:detalle','lookup_field':'pk'}
         }
+
+
+class PersonPagination(pagination.PageNumberPagination):
+    page_size = 5
+    max_page_size = 100
+
+
+class CountReunionSerializer(serializers.Serializer):
+    persona__job = serializers.CharField()
+    cantidad = serializers.IntegerField()

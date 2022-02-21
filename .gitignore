@@ -1,1 +1,3 @@
 /secret.json
+/applications/persona/migrations/0002_hobby_alter_person_phone_reunion_person_hobbies.py
+/applications/persona/migrations/0001_initial.py

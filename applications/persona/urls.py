@@ -17,4 +17,6 @@ urlpatterns = [
     path('api/reuniones/',views.ReunionAPILista.as_view()),
     path('api/reuniones2/',views.ReunionAPILista2.as_view()),
     path('linkinpark/',views.ReunionAPIListaLink.as_view()),
+    path('api/personas/paginacion/',views.PersonPaginacionLista.as_view()),
+    path('api/reunion/por-job/',views.ReunionByPersonJob.as_view()),
 ]
